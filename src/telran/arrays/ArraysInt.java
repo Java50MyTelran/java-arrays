@@ -16,13 +16,20 @@ public static int[] insertNumber(int[] array, int index, int number) {
 	return res;
 }
 public static int[] removeNumber(int [] array, int index) {
-	//TODO returns array with no number at the given index
-	return null;
+	// returns array with no number at the given index
+	int [] res = new int[array.length - 1];
+	System.arraycopy(array, 0, res, 0, index);
+	System.arraycopy(array, index + 1, res, index, res.length - index);
+	return res;
 }
 public static int[] insertNumberSorted(int [] arraySorted, int number) {
-	//TODO takes sorted array and number to insert
+	//takes sorted array and number to insert
 	//returns sorted array with the given number at a proper position
 	//apply the standard method of the class Arrays int binarySearch(int[] arraySorted, int key)
-	return null;
+	int index = Arrays.binarySearch(arraySorted, number);
+	if (index < 0) {
+		index = -(index + 1);
+	}
+	return insertNumber(arraySorted, index, number);
 }
 }
