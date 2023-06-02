@@ -1,6 +1,7 @@
 package telran.arrays.test;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 
 import telran.arrays.ArraysInt;
 
@@ -103,5 +104,33 @@ void insertSortedTest() {
 	assertArrayEquals(expected4, ArraysInt.insertNumberSorted(src, 5));
 	assertArrayEquals(expected5, ArraysInt.insertNumberSorted(src, 35));
 	assertArrayEquals(expected6, ArraysInt.insertNumberSorted(src, 75));
+}
+@Test
+void maxIntTest() {
+	assertEquals(Integer.MAX_VALUE, getIntMax());
+}
+private int getIntMax() {
+	int res = 1;
+	while(res > 0) {
+		res++;
+	}
+	
+	
+	return res - 1;
+}
+
+@Test
+@Timeout(3)
+void maxLongTest() {
+	assertEquals(Long.MAX_VALUE, getLongMax());
+}
+private long getLongMax() {
+	long res = 1;
+	while(res > 0) {
+		res *= 2;
+	}
+	
+	
+	return res - 1;
 }
 }
