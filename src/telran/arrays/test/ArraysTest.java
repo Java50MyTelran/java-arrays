@@ -8,7 +8,10 @@ import telran.arrays.ArraysInt;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
+import java.util.Random;
 public class ArraysTest {
+private static final int N_ELEMENTS = 100000;
+private static final int N_RUNS = 1000000;
 @Test
 void initialTest() {
 	int [] ar1 = {1, 2, 3};
@@ -132,5 +135,51 @@ private long getLongMax() {
 	
 	
 	return res - 1;
+}
+//tests for HW #3
+@Test
+void muchRepeatedTest () {
+	int array[] = new int[N_ELEMENTS];
+	for(int i = 0; i < N_RUNS; i++) {
+		assertEquals(0, ArraysInt.binarySearch(array, 0));
+	}
+}
+@Test
+void ArraysIntBinarySearchTest() {
+	
+	// int key)
+	int [] src = {10, 20, 30, 40, 50, 60, 70};
+	assertEquals(3, ArraysInt.binarySearch(src, 40));
+	assertEquals(0, ArraysInt.binarySearch(src, 10));
+	assertEquals(6, ArraysInt.binarySearch(src, 70));
+	assertEquals(-1, ArraysInt.binarySearch(src, 5));
+	assertEquals(-4, ArraysInt.binarySearch(src, 35));
+	assertEquals(-8, ArraysInt.binarySearch(src, 75));
+}
+@Test
+void quickSortTest() {
+	int array[] = getRandomArray();
+	ArraysInt.quickSort(array);
+	testSorted(array);
+}
+@Test
+void bubbleSortTest() {
+	int array[] = getRandomArray();
+	ArraysInt.bubbleSort(array);
+	testSorted(array);
+}
+private void testSorted(int[] array) {
+	for(int i = 1; i < array.length; i++) {
+		assertTrue(array[i - 1] <= array[i]);
+	}
+	
+}
+private int[] getRandomArray() {
+	int [] res = new int[N_ELEMENTS];
+	Random gen = new Random();
+	for(int i = 0; i < N_ELEMENTS; i++) {
+		res[i] = gen.nextInt();
+	}
+	return res;
 }
 }

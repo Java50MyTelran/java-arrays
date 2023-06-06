@@ -53,15 +53,16 @@ public class ArraysInt {
 		int left = 0;
 		int right = array.length - 1;
 		int middle = right / 2;
-		while (left <= right && array[middle] != number) {
-			if (number < array[middle]) {
+		while (left <= right && array[left] != number) {
+			if (number <= array[middle]) {
 				right = middle - 1;
 			} else {
 				left = middle + 1;
 			}
 			middle = (left + right) / 2;
 		}
-		return left <= right ? middle : -1;
+		
+		return left < array.length && array[left] == number ? left : -left -1;
 	}
 	public static void quickSort(int [] array) {
 		Arrays.sort(array);
