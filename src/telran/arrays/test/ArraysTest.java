@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 import java.util.Random;
 public class ArraysTest {
-private static final int N_ELEMENTS = 100000;
+private static final int N_ELEMENTS = 1000000;
 private static final int N_RUNS = 1000000;
 @Test
 void initialTest() {
@@ -140,8 +140,21 @@ private long getLongMax() {
 @Test
 void muchRepeatedTest () {
 	int array[] = new int[N_ELEMENTS];
+	for(int i = 0; i < N_ELEMENTS / 2; i++) {
+		array[i] = -1;
+	}
 	for(int i = 0; i < N_RUNS; i++) {
-		assertEquals(0, ArraysInt.binarySearch(array, 0));
+		assertEquals(N_ELEMENTS / 2, ArraysInt.binarySearch(array, 0));
+	}
+}
+@Test
+void muchRepeatedSearchTest () {
+	int array[] = new int[N_ELEMENTS];
+	for(int i = 0; i < N_ELEMENTS / 2; i++) {
+		array[i] = -1;
+	}
+	for(int i = 0; i < N_RUNS; i++) {
+		assertEquals(N_ELEMENTS / 2, ArraysInt.searchNumber(array, 0));
 	}
 }
 @Test
