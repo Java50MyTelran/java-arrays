@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import static telran.arrays.MatricesInt.*;
 
+import java.util.Random;
+
 class MatricesTest {
 
 	@Test
@@ -20,6 +22,7 @@ class MatricesTest {
 		int[][] src = { { 1, 10, 20 }, { 30, -10, 15 } };
 		int[] expected = { 1, 30 };
 		assertArrayEquals(expected, getColumn(src, 0));
+		
 	}
 
 	@Test
